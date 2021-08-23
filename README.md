@@ -113,5 +113,6 @@ M  E  E  T  I  N  G       A  T       1    4       P   M       I  N      N  Y   (
 
 ## Documentation
 
+Generate docs from markdown using `nim rst2html *.md` (works for both rst and markdown). API docs are generated with `nim doc *.nim`.
 
 Include hash of the generated OTP book/page so we can validate it hasnt been tampered.
