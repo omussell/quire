@@ -1,6 +1,8 @@
-When run without arguments, generates a one time pad, including codebook and conversion table and prints to stdout
+When run without arguments, print the help page.
 
-If -o is given, write to file instead of stdout
+When run with XYZ flag, generates a one time pad, including codebook and conversion table and prints to stdout
+
+If XYZ flag is given, write to file instead of stdout
 
 The one time pad is arranged as follows:
 
@@ -19,3 +21,6 @@ The one time pad is arranged as follows:
 What are the chances that the KEYID, the first group in the OTP, is a duplicate between pads? If the same KEYID appears more than once then you wont be able to use it as an identifier?
 
 Can we use a Trusted Execution Environment like Intel SGX or ARM TrustZone? If we can, make it so that it detects which CPU type is being used and decide how to run.
+
+Should include the conversion tables for the other languages
+Should include blank copies of the codebooks so you can make your own

@@ -6,6 +6,33 @@ Generate a One Time Pad notebook for unbreakable encryption. [What is a One Time
 
 A good paper explaining how one-time pads work is [here](http://users.telenet.be/d.rijmenants/papers/one_time_pad.pdf)
 
+## Project Requirements
+
+[MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method)
+
+### Must have
+
+- Use a secure random number generator, either CSPRNG or hardware.
+- Output a working one-time pad in a format suitable for printing and copying.
+- Output the language to plaincode conversion table.
+- Output the codebook, if used.
+
+### Should have
+
+- Generate enough number groups to encode a reasonably long message in a single pad.
+- Generate enough pages within a pad to last a reasonably long time.
+
+### Could have
+
+- Allow the ability to use conversion tables for different languages
+- Allow the ability for the user to provide their own conversion table
+- CPU optimisations like SIMD, NEON etc.
+- Run inside the CPU secure enclave like SGX, TrustZone etc.
+
+### Wont have
+
+## How a One-Time Pad Works
+
 ### Message Preparation
 
 The message needs to be converted into plaincode first, which means using the conversion table which has been optimised for English so that frequently used letters are single-digit values.
