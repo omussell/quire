@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quire
+  labels:
+    app: quire
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quire
+  template:
+    metadata:
+      labels:
+        app: quire
+    spec:
+      containers:
+      - name: quire
+        image: 192.168.0.36:32000/quire
