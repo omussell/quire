@@ -7,7 +7,7 @@ If XYZ flag is given, write to file instead of stdout
 The one time pad is arranged as follows:
 
 - 53 pages
-- The 1st page of the book displays the serial number of the whole pad itself, in the form of a base64 hash of each of the page hashes. This also consistutes as an identifier for the pad.
+- The 1st page of the book displays the serial number of the whole pad itself, in the form of a base64 hash of each of the page hashes. This also constitutes as an identifier for the pad.
 - The 52nd page of the book is the codebook of common words and phrases
 - The 53rd page of the book is the conversion table
 - The intervening pages display one time pads
