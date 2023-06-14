@@ -2,34 +2,40 @@
 
 Generate a One Time Pad notebook for unbreakable encryption. [What is a One Time Pad?](https://en.wikipedia.org/wiki/One-time_pad)
 
-## Summary
-
-A good paper explaining how one-time pads work is [here](http://users.telenet.be/d.rijmenants/papers/one_time_pad.pdf)
-
-## Project Requirements
-
-[MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method)
-
-### Must have
-
-- Use a secure random number generator, either CSPRNG or hardware.
+have a way to convert plaintext into numbers
+Include hash of the generated OTP book/page so we can validate it hasnt been tampered.
 - Output a working one-time pad in a format suitable for printing and copying.
 - Output the language to plaincode conversion table.
 - Output the codebook, if used.
-
-### Should have
-
-- Generate enough number groups to encode a reasonably long message in a single pad.
-- Generate enough pages within a pad to last a reasonably long time.
-
-### Could have
-
 - Allow the ability to use conversion tables for different languages
 - Allow the ability for the user to provide their own conversion table
-- CPU optimisations like SIMD, NEON etc.
-- Run inside the CPU secure enclave like SGX, TrustZone etc.
 
-### Wont have
+For page identifier, feed random bytes into blake3
+
+When run without arguments, print the help page.
+
+When run with XYZ flag, generates a one time pad, including codebook and conversion table and prints to stdout
+
+If XYZ flag is given, write to file instead of stdout
+
+The one time pad is arranged as follows:
+
+- 53 pages
+- The 1st page of the book displays the serial number of the whole pad itself, in the form of a base64 hash of each of the page hashes. This also constitutes as an identifier for the pad.
+- The 52nd page of the book is the codebook of common words and phrases
+- The 53rd page of the book is the conversion table
+- The intervening pages display one time pads
+- For each OTP page, groups of five numbers separated by a single space, arranged in five columns and ten rows
+- Pages are separated by 30 hyphen characters.
+
+What are the chances that the KEYID, the first group in the OTP, is a duplicate between pads? If the same KEYID appears more than once then you wont be able to use it as an identifier?
+
+Should include the conversion tables for the other languages
+Should include blank copies of the codebooks so you can make your own
+
+## Summary
+
+A good paper explaining how one-time pads work is [here](http://users.telenet.be/d.rijmenants/papers/one_time_pad.pdf)
 
 ## How a One-Time Pad Works
 
@@ -134,12 +140,3 @@ Plaincode   : KEYID  79226  34749  91690  11144  49080  79993  49948  89191
 79 2  2  6  3  4  74  99  1  6  90  111  444  90  80  79  99  3  4  99  4  88  91
 M  E  E  T  I  N  G       A  T       1    4       P   M       I  N      N  Y   (.)
 ```
-
-
-## Install
-
-## Documentation
-
-Generate docs from markdown using `nim rst2html *.md` (works for both rst and markdown). API docs are generated with `nim doc *.nim`.
-
-Include hash of the generated OTP book/page so we can validate it hasnt been tampered.

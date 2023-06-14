@@ -1,6 +1,3 @@
-from pydantic import BaseModel
-import nacl.hash
-import nacl.utils
 import secrets
 
 english_conversion_table = """

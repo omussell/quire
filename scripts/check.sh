@@ -1,6 +1,5 @@
 #!/bin/sh
 
-isort --check --diff src
 black --check --diff src
-flake8 src
+ruff check src
 mypy src

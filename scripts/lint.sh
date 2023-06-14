@@ -1,4 +1,4 @@
 #!/bin/sh
 
-isort src
 black src
+ruff src

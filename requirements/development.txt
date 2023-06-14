@@ -1,0 +1,12 @@
+-r production.txt
+
+black
+ruff
+mypy
+ipython
+pytest
+mkdocs
+mkdocs-material
+mkdocstrings
+radon
+lizard
