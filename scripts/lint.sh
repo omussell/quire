@@ -1,4 +1,4 @@
 #!/bin/sh
 
-black src
-ruff src
+black quire.py
+ruff quire.py

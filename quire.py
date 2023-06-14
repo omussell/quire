@@ -1,4 +1,5 @@
 import secrets
+from blake3 import blake3
 
 english_conversion_table = """
 CODE-0  B-70  P-80  NUM-90
@@ -44,15 +45,24 @@ english_code_book = """
 
 
 def random_pad():
-    random_number_pad = ''.join(str(secrets.randbelow(10)) for i in range(250))
-    chunks = [random_number_pad[i:i+25] for i in range(0, len(random_number_pad), 25)]
-    
+    random_number_pad = "".join(str(secrets.randbelow(10)) for i in range(250))
+    chunks = [
+        random_number_pad[i : i + 25] for i in range(0, len(random_number_pad), 25)
+    ]
+    pad_identifier = blake3(secrets.token_bytes(32)).hexdigest()
+
+    print(pad_identifier[:29])
     for chunk in chunks:
-        row = [chunk[i:i+5] for i in range(0, len(chunk), 5)]
+        row = [chunk[i : i + 5] for i in range(0, len(chunk), 5)]
         print(" ".join(row))
     print("-" * 30)
 
-for _ in range(50):
-    random_pad()
-print(english_conversion_table)
-print(english_code_book)
+
+def print_book():
+    for _ in range(50):
+        random_pad()
+    print(english_conversion_table)
+    print(english_code_book)
+
+
+print_book()
